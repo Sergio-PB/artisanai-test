@@ -13,6 +13,8 @@ class ChatService:
         chat = Chat(
             user_id=user_id,
         )
+        message = MessageService.create_message(chat.id, 'Welcome to the chat!')
+        chat.messages.append(message)
         ChatService.chats[chat.id] = chat
         return chat
 
