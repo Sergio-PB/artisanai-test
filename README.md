@@ -21,13 +21,14 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
 
 ## Next Steps 🚀
 
+- Add CI/CD pipelines with GitHub actions.
+- Add E2E testing with Cypress + Cucumber.
 - Generate replies using a real AI model.
     - Integrate the ChatbotService with an AI provider using Langchain to explore and find the best fit for our product.
 - Implement data persistence.
     - Store chat data in columnar ORC format in the S3 standard tier.
     - Create a lifecycle rule so that once analyzed, the data moves to Infrequent Access tier so we minimize costs.
 - Integrate the auth middleware with the company's authentication backend.
-- Add E2E testing with Cypress + Cucumber.
 - Add a "give feedback" button to collect engaged users' feedback.
 
 Let's make the ArtisanAI chatbot even better! 😊
