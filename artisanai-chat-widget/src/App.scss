@@ -1,0 +1,58 @@
+$primary: #7c3af8;
+
+$theme-colors: (
+  "primary": $primary,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+.App{
+  height: 100%;
+  text-align: center;
+}
+
+.App-logo{
+  height: 50px;
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: no-preference){
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header{
+  height: 8vh;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 5px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.App-body {
+  height: 92vh;
+}
+
+.App-messages-tray {
+  position: fixed;
+  width: 30%;
+  z-index: 0;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,136 @@
+@import "../App.scss";
+
+.chat-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  &.maxi {
+    height: 100%;
+    width: 100%;
+    transition:
+      height 0.4s ease-in,
+      width 0.4s ease-in;
+  }
+
+  &.mini {
+    height: 80%;
+    width: 40%;
+    min-height: 600px;
+    min-width: 400px;
+    max-width: 95%;
+    max-height: 95%;
+    transition:
+      height 0.4s ease-out,
+      width 0.4s ease-out;
+  }
+
+  border-radius: 10px 10px 10px 10px;
+  background-color: #f9f9f9;
+  color: #2e2e2e;
+  padding: 3px;
+
+  i {
+    font-size: 2rem;
+  }
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 10px 10px;
+  z-index: 1;
+  box-shadow: rgba($primary, 0.2) 0px 5px, rgba($primary, 0.2) 0px 10px, rgba($primary, 0.15) 0px 15px, rgba($primary, 0.05) 0px 20px, rgba($primary, 0.01) 0px 25px;
+
+  .bi-arrows-angle-expand, .bi-arrows-angle-contract {
+    font-size: 1rem;
+    margin: 10px;
+  }
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 10px 10px 10px 10px;
+  overflow: auto;
+  scroll-behavior: smooth;
+  margin-top: 2px;
+  padding-top: 10px;
+
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 10px 20px -3px inset;
+
+  .intro-message {
+    i {
+      font-size: 3rem;
+    }
+  }
+
+  .message {
+    display: flex;
+  }
+
+  .message p {
+    border-radius: 35px 35px 35px 35px;
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .human {
+    margin-left: auto;
+
+    &:hover {
+      p {
+        background-color: darken($primary, 10%);
+      }
+
+      i {
+        opacity: 1;
+      }
+    }
+  }
+
+  .human p {
+    border-top-right-radius: 0%;
+    background-color: $primary;
+    color: white;
+    float: right;
+    text-align: right;
+
+    input {
+      background-color: #e0d0ff;
+    }
+  }
+
+  .human i {
+    margin: auto;
+    font-size: 1.5rem;
+    color: $primary;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+  }
+
+  .bot i {
+    margin-left: 10px;
+  }
+
+  .bot p {
+    border-top-left-radius: 0%;
+    background-color: #e3e3e3;
+    float: left;
+    text-align: left;
+  }
+}
+
+.chat-footer {
+  border-top: #d1d1d1 0.5px solid;
+
+  .user-avatar {
+    padding-left: 10px;
+    color: $primary;
+  }
+}

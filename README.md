@@ -11,6 +11,7 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
 ## Business decisions 💼
 
 - Users will interact with the chatbot during a single session, and there will be no access to a chat history.
+- Users are only able to edit/delete the last not-deleted message in the chat. This will avoid confusion if looking at fragments of a history.
 - Data persistence is not included in the MVP stage.
 
 ## Running 
@@ -26,5 +27,7 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
     - Store chat data in columnar ORC format in the S3 standard tier.
     - Create a lifecycle rule so that once analyzed, the data moves to Infrequent Access tier so we minimize costs.
 - Integrate the auth middleware with the company's authentication backend.
+- Add E2E testing with Cypress + Cucumber.
+- Add a "give feedback" button to collect engaged users' feedback.
 
 Let's make the ArtisanAI chatbot even better! 😊
