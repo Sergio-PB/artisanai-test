@@ -17,7 +17,7 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
 ## Running 
 
 ### Dev/Local
-- The instructions to run the backend and frontend are located in the respective directories README.md files: `artisanai-api/README.md` and `artisanai-chatbot/README.md`
+- The instructions to run the backend and frontend are located in the respective directories README.md files: `artisanai-api/README.md` and `artisanai-chat-widget/README.md`
 
 ## Next Steps 🚀
 
