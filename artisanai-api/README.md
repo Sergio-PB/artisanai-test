@@ -13,6 +13,8 @@ docker run --rm --name artisanai-api -p 8000:8000 sergiopb/artisanai-api
 
 And access the API on http://localhost:8000/docs
 
+See our oficial image in https://hub.docker.com/r/sergiopb/artisanai-api
+
 ### Source code 💻
 1. Clone the repository
 2. Navigate to the project directory
