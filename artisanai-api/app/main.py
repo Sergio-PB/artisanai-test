@@ -1,4 +1,6 @@
 
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -12,6 +14,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         'http://localhost:3000',
+
+        # For AWS health checks
+        os.environ.get('EC2_PRIVATE_IP'),
+
         # For simplicity, if creating a new distribution, etc...
         '*',
 

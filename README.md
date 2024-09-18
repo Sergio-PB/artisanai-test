@@ -17,10 +17,19 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
 ## Running 🏃‍➡️
 
 ### Dev/Local
-- The instructions to run the backend and frontend are located in the respective directories README.md files: `artisanai-api/README.md` and `artisanai-chat-widget/README.md`
+The instructions to run the backend and frontend are located in the respective directories README.md files:
+- [`artisanai-api/README.md`](artisanai-api/README.md)
+- [`artisanai-chat-widget/README.md`](artisanai-chat-widget/README.md)
+
+### Production
+The production setup is done through Infrastructure-as-Code, and is located in the `infrastructure` directory.
+
+To run the full stack in your AWS account, follow the instructions in [here](infrastructure/README.md)
 
 ## Next Steps 🚀
 
+- Buy a domain for our chatbot
+    - In order to deploy to AWS with the desired infrastructure, I used a personal domain
 - Add CI/CD pipelines with GitHub actions.
     - Fully integrate with the infrastructure module.
 - Add E2E testing with Cypress + Cucumber.

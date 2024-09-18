@@ -22,11 +22,11 @@ The infrastructure resides in a CloudFormation Stack, which contains the followi
 ### Data flow
 
 1. The user access the app's DNS, that redirects to the CloudFront's distribution CNAME.
-    * At the time of this writing, there's no DNS domain purchased. So the user will access the distribution's DNS directly.
+    * At the time of this writing, there's no domain purchased. So the user will access the distribution's DNS directly.
 2. The distribution fetches the origin's (S3 bucket) data, and serves them as a standard webserver would.
     * HTTP headers must be allowed here.
-3. The user's browser then renders the Chatbot Widget app, which sends HTTP requests to the EC2 instance public DNS
-    * Whenever we purchase a DNS domain, we should also add a subdomain CNAME record to the EC2 name.
+3. The user's browser then renders the Chatbot Widget app, which sends HTTPS requests to the EC2 load balancer
+4. The load balancer listener on port 443 redirects the request to one of the Auto Scaling EC2 instances on port 80
 
 ## Deploying 🛠️
 
@@ -43,6 +43,7 @@ cdk bootstrap
 
 
 1. Ensure there's a `build` directory in the frontend module
+    * Configure your `../artisanai-chat-widget/.env` to point to a static domain name
 
     * Running `npm run build` in `../artisanai-chatbot-widget` does the trick.
 
@@ -55,17 +56,8 @@ cdk bootstrap
     cdk deploy
     ```
     * Note that to create the initial resources it will take several minutes. That's due to the CloudFront distribution, which sets up a global CDN for us.
-4. Set the backend endpoint in the frontend app
-
-    * While there's no static DNS, this step is required
-
-    * Copy the `Ec2PublicEndpoint` from the outputs
-
-    * Paste it in `../artisanai-chat-widget/.env`
-
-    * Re-build the frontend
-
-    * Re-deploy (repeat step 3.)
+4. Configure a DNS record pointing to the Load Balancer public DNC
+    * You can grab it from the previous step's outputs
 
 Note that changes to the frontend may take some time to propagate to CloudFront's CDN.\
 You either have to wait or manually invalidate the distribution.
