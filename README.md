@@ -14,7 +14,7 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
 - Users are only able to edit/delete the last not-deleted message in the chat. This will avoid confusion if looking at fragments of a history.
 - Data persistence is not included in the MVP stage.
 
-## Running 
+## Running 🏃‍➡️
 
 ### Dev/Local
 - The instructions to run the backend and frontend are located in the respective directories README.md files: `artisanai-api/README.md` and `artisanai-chat-widget/README.md`

@@ -12,6 +12,13 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         'http://localhost:3000',
+        # For simplicity, if creating a new distribution, etc...
+        '*',
+
+        # In production, we would want set either the CloudFront distribution domain:
+        # 'https://did1zl67m0vwv.cloudfront.net',
+        # Or the DNS domain:
+        # 'https://artisanai.com',
     ],
     allow_credentials=True,
     allow_methods=['*'],

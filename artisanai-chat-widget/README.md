@@ -17,7 +17,12 @@ This is the frontend module of the Artisan Chatbot
     npm i
     ```
 
-4. Start the server in dev mode
+4. Update your environment
+    * Copy the file `artisanai-chat-widget/.env` to `artisanai-chat-widget/.env.local`
+
+    * Set the REACT_APP_API_URL to what works for you, http://localhost:8000 if you're running the backend as well
+
+5. Start the server in dev mode
     ```shell
     npm start
     ```
@@ -27,9 +32,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### Pointing to a backend URL
-In case you're not running the backend module in localhost:8000, update the `.env` file with the correct address.
 
 
 ## Contributing
