@@ -4,7 +4,16 @@ This is the backend module of the Artisan Chatbot
 
 ## Installation
 
-### Source code
+### Docker 🐳
+You can run the API from our stable docker image.\
+Assuming you have your `docker` setup and running, execute:
+```shell
+docker run --rm --name artisanai-api -p 8000:8000 sergiopb/artisanai-api
+```
+
+And access the API on http://localhost:8000/docs
+
+### Source code 💻
 1. Clone the repository
 2. Navigate to the project directory
     ```shell
@@ -34,6 +43,27 @@ This is the backend module of the Artisan Chatbot
     ```shell
     uvicorn app.main:app --reload
     ```
+
+5. Access the API on http://localhost:8000/docs
+
+### Building a Docker image 💻 + 🐳
+1. Clone the repository
+2. Navigate to the project directory
+    ```shell
+    cd artisanai-test/artisanai-api
+    ```
+
+3. Build the backend image with:
+    ```shell
+    docker build -t artisanai-api:latest .
+    ```
+
+4. Run the image:
+    ```shell
+    docker run --rm --name artisanai-api -p 8000:8000 artisanai-api
+    ```
+
+5. Access the API on http://localhost:8000/docs
 
 ## Contributing
 
