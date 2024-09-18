@@ -129,10 +129,10 @@ export class InfrastructureStack extends cdk.Stack {
       `echo "alias run=\'${dockerRunCommand}\'" >> /home/ec2-user/.bashrc`,
       //   Command 'pull' will pull the latest image
       `echo "alias pull=\'docker pull ${InfrastructureStack.dockerImage}\'" >> /home/ec2-user/.bashrc`,
-      //   Command 'restart' will restart the container
-      `echo "alias restart=\'docker restart artisanai-api\'" >> /home/ec2-user/.bashrc`,
+      //   Command 'kill' will kill the container
+      `echo "alias kill=\'docker kill artisanai-api\'" >> /home/ec2-user/.bashrc`,
       //   Command 'redeploy' will pull the latest image and restart the container
-      `echo "alias redeploy=\'pull; restart\'" >> /home/ec2-user/.bashrc`
+      `echo "alias redeploy=\'pull; kill; run\'" >> /home/ec2-user/.bashrc`
     );
     return userData;
   }
