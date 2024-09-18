@@ -73,5 +73,6 @@ You either have to wait or manually invalidate the distribution.
 ## Next steps
 
 * Add a command in package.json to upload the frontend build
+* Add a command in package.json to build and push the backend Docker image
 * Create a .env for the infrastructure module.
 * Setup a GitHub action to run this module and re-deploy upon merges.

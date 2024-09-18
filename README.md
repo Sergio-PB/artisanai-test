@@ -22,7 +22,9 @@ This project is an MVP for the ArtisanAI chatbot product. The main goal is to va
 ## Next Steps 🚀
 
 - Add CI/CD pipelines with GitHub actions.
+    - Fully integrate with the infrastructure module.
 - Add E2E testing with Cypress + Cucumber.
+    - Add environments to our IaC so we can quickly spin up a Beta/Stage environment to run E2E as part of the CD pipeline.
 - Generate replies using a real AI model.
     - Integrate the ChatbotService with an AI provider using Langchain to explore and find the best fit for our product.
 - Implement data persistence.
