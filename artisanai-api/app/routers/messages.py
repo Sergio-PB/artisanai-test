@@ -15,6 +15,8 @@ def create_message(chat_id: UUID, message_request: MessageCreateRequest) -> Mess
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Chat not found')
 
     message = MessageService.create_message(chat_id, message_request.body)
+    chat.messages.append(message)
+
     reply = ChatbotService.generate_reply(chat, message)
     set_reply_worked = MessageService.set_message_reply(message, reply)
     if not set_reply_worked:

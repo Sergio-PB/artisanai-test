@@ -10,5 +10,5 @@ class ChatbotService:
         This is a dummy service for now. The next step is to integrate this with an AI model.
         @TODO Integrate using Langchain
         """
-        reply = f'Very interesting, "{new_message.body[:10]}" is the {len(chat.messages)+1}th message'
+        reply = f'Very interesting, "{new_message.body[:10]}" is the {len(chat.messages)}th message'
         return reply
