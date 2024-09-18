@@ -1,5 +1,8 @@
 @import "../App.scss";
 
+$panel-min-height: 600px;
+$min-heigh-breakpoint: $logo-height + $panel-min-height;
+
 .chat-panel {
   position: relative;
   display: flex;
@@ -18,10 +21,16 @@
   &.mini {
     height: 80%;
     width: 40%;
-    min-height: 600px;
-    min-width: 400px;
+    min-height: 100%;
+    min-width: 100%;
     max-width: 95%;
     max-height: 95%;
+    @media (min-width: 400px) {
+      min-width: 400px;
+    }
+    @media (min-height: $min-heigh-breakpoint) {
+      min-height: $panel-min-height;
+    }
     transition:
       height 0.4s ease-out,
       width 0.4s ease-out;
@@ -55,7 +64,9 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  min-height: 300px;
+  @media (min-height: $min-heigh-breakpoint) {
+    min-height: 300px;
+  }
   border-radius: 10px 10px 10px 10px;
   overflow: auto;
   scroll-behavior: smooth;
