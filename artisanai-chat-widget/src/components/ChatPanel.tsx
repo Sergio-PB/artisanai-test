@@ -192,7 +192,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ onClose, onError }) => {
                     <div className="d-flex flex-column">
                         <div className="row mb-3">
                             <div className="d-flex">
-                                <input name="newMessageBody" type="text" className="form-control" aria-required="true" />
+                                <input name="newMessageBody" type="text" className="form-control" aria-required="true" maxLength={100} />
                                 <i className="bi bi-person-circle user-avatar"></i>
                             </div>
                         </div>
