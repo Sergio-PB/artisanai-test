@@ -36,6 +36,8 @@ To run the full stack in your AWS account, follow the instructions in [here](inf
     - Add environments to our IaC so we can quickly spin up a Beta/Stage environment to run E2E as part of the CD pipeline.
 - Generate replies using a real AI model.
     - Integrate the ChatbotService with an AI provider using Langchain to explore and find the best fit for our product.
+    - Enable the UI's context selector
+- Develop the messages suggestions pills, as per the original design
 - Implement data persistence.
     - Store chat data in columnar ORC format in the S3 standard tier.
     - Create a lifecycle rule so that once analyzed, the data moves to Infrequent Access tier so we minimize costs.
