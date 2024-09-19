@@ -101,5 +101,3 @@ class MessageService:
         for i in range(len(messages) - 1, -1, -1):
             if not messages[i].deleted_at:
                 return messages[i]
-
-        return None
