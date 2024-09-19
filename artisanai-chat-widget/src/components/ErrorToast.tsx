@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
@@ -7,7 +7,7 @@ interface ChatPanelProps {
     message: string;
 }
 
-const ErrorToast: React.FC<ChatPanelProps> = ({ message }) => {
+const ErrorToast: FC<ChatPanelProps> = ({ message }) => {
     const [show, setShow] = useState(true);
 
     const toggleShow = () => setShow(!show);

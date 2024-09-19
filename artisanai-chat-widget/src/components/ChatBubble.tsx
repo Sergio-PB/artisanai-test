@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC } from 'react';
 
 interface ChatBubbleProps {
     onClick: () => void;
 }
 
-const ChatBubble: React.FC<ChatBubbleProps> = ({ onClick }) => {
+const ChatBubble: FC<ChatBubbleProps> = ({ onClick }) => {
     return (
         <div className="position-fixed bottom-0 end-0 p-4">
             <button className="btn btn-primary rounded-circle shadow" onClick={onClick}>

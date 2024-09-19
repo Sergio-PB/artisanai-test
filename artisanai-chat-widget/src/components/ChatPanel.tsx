@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { createChat, deleteMessage, editMessage, sendMessage } from '../api/api';
-import Chat from '../models/chat.model';
-import ChatMessage from './ChatMessage';
-import Message from '../models/message.model';
+import { FC, FormEvent, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/esm/DropdownButton';
 import ButtonGroup from 'react-bootstrap/esm/ButtonGroup';
 import Dropdown from 'react-bootstrap/esm/Dropdown';
-
-enum PanelSize {
-    Mini = 'mini',
-    Maxi = 'maxi',
-}
+import { createChat, deleteMessage, editMessage, sendMessage } from '../api/api';
+import Chat from '../models/chat.model';
+import ChatMessage from './ChatMessage';
+import Message from '../models/message.model';
+import { PanelSize } from '../enums/panel-size';
+import ChatPanelHeader from './ChatPanelHeader';
+import ChatPanelBody from './ChatPanelBody';
+import ChatPanelFooter from './ChatPanelFooter';
 
 interface ChatPanelProps {
     onClose: () => void;
     onError: (errorMessage: string) => void;
 }
 
-const ChatPanel: React.FC<ChatPanelProps> = ({ onClose, onError }) => {
+const ChatPanel: FC<ChatPanelProps> = ({ onClose, onError }) => {
     const [size, setSize] = useState<PanelSize>(PanelSize.Mini);
     const [chat, setChat] = useState<Chat | undefined>();
     const [messages, setMessages] = useState<Message[]>([]);
+    const maxMessageLength = 100;
 
     useEffect(() => {
         createChat()
@@ -41,7 +41,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ onClose, onError }) => {
      * Sending a message takes some time, so we show the message immediately in the UI as a local message.
      * Then, once we get the response from the server, we update the messages with the actual data.
      */
-    const handleSendMessage = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newMessageBody = (event.target as any).newMessageBody.value;
         if (!newMessageBody) {
@@ -160,69 +160,11 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ onClose, onError }) => {
 
     return (
         <div className={`chat-panel ${size}`}>
-            <div className="chat-header">
-                <Button variant="link" className="float-start" aria-label="Toggle chat box size" onClick={handleToggleSize}>
-                    {size === PanelSize.Mini && (<i className="bi bi-arrows-angle-expand"></i>)}
-                    {size === PanelSize.Maxi && (<i className="bi bi-arrows-angle-contract"></i>)}
-                </Button>
-                <Button variant="link" className="float-end" onClick={onClose} aria-label="Close chat">
-                    <i className="bi bi-x"></i>
-                </Button>
-            </div>
+            <ChatPanelHeader size={size} handleToggleSize={handleToggleSize} onClose={onClose} />
 
-            <div id="chat" className="chat-body">
-                <div className="intro-message my-3">
-                    <i className="bi bi-emoji-smile"></i>
-                    <h4>Hi 👋, I'm Ava</h4>
-                    <h6 className="text-muted">Ask me anything or pick a place to start</h6>
-                </div>
-                {messages.map((message, index) => (
-                    <ChatMessage
-                        index={index}
-                        message={message}
-                        isEditable={message.sender === 'human' && index === messages.length-2}
-                        onEdited={handleEditMessage}
-                        onDeleted={handleDeleteMessage}
-                    />
-                ))}
-            </div>
+            <ChatPanelBody messages={messages} onEdited={handleEditMessage} onDeleted={handleDeleteMessage} />
 
-            <div className="chat-footer p-3">
-                <form onSubmit={handleSendMessage}>
-                    <div className="d-flex flex-column">
-                        <div className="row mb-3">
-                            <div className="d-flex">
-                                <input name="newMessageBody" type="text" className="form-control" aria-required="true" maxLength={100} />
-                                <i className="bi bi-person-circle user-avatar"></i>
-                            </div>
-                        </div>
-                        <div className="d-flex justify-content-between">
-                            <div className="align-content-center">
-                                <strong className="text-muted me-2">Context</strong>
-                                <DropdownButton
-                                    as={ButtonGroup}
-                                    size="sm"
-                                    variant="outline-secondary"
-                                    title="Onboarding"
-                                    disabled={true}
-                                    aria-label="Chat context selector"
-                                >
-                                    <Dropdown.Item eventKey="1">Onboarding</Dropdown.Item>
-                                    <Dropdown.Item eventKey="2">Advanced</Dropdown.Item>
-                                </DropdownButton>
-                            </div>
-                            <div className="footer-actions">
-                                <Button variant="outline-secondary" disabled={true} className="p-0 px-1 border-0" aria-label="Chatbox options">
-                                    <i className="bi bi-gear"></i>
-                                </Button>
-                                <Button variant="outline-primary" type="submit" className="p-0 border-0" aria-label="Send message">
-                                    <i className="bi bi-send"></i>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <ChatPanelFooter maxMessageLength={maxMessageLength} onSendMessage={handleSendMessage} />
         </div>
     );
 };

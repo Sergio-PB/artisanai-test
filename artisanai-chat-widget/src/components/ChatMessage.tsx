@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Message from "../models/message.model";
+import { FC, FormEvent, useState } from 'react';
+import Message from '../models/message.model';
 
 export enum MessageMode {
     View = 'view',
@@ -14,7 +14,7 @@ interface ChatMessageProps {
     onDeleted: ({index, message}: {index: number, message: Message}) => void;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ index, message, isEditable, onEdited, onDeleted }) => {
+const ChatMessage: FC<ChatMessageProps> = ({ index, message, isEditable, onEdited, onDeleted }) => {
     const [mode, setMode] = useState(MessageMode.View);
 
     const emojiForIndex = (index: number) => {
@@ -52,7 +52,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ index, message, isEditable, o
         onDeleted({index, message});
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newBody = (event.target as any).newBody.value;
         onEdited({index, message, newBody});

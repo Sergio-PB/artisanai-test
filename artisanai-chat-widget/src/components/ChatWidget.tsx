@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 import ChatBubble from './ChatBubble';
 import ChatPanel from './ChatPanel';
 import './ChatWidget.scss';
@@ -12,7 +12,7 @@ interface ChatWidgetProps {
     onError: (errorMessage: string) => void;
 }
 
-const ChatWidget: React.FC<ChatWidgetProps> = ({ onError }) => {
+const ChatWidget: FC<ChatWidgetProps> = ({ onError }) => {
     const [mode, setMode] = useState<WidgetMode>(WidgetMode.Collapsed);
 
     const handleClickBubble = () => {
