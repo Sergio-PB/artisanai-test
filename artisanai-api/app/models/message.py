@@ -1,11 +1,13 @@
 from datetime import datetime
-from typing import Optional
+from typing import ClassVar, Optional
 from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field
 
 
 class Message(BaseModel):
+    MAX_MESSAGE_LENGTH: ClassVar = 255
+
     id: UUID = Field(default_factory=uuid4)
     chat_id: UUID = Field()
     body: str = Field()

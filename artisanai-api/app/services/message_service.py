@@ -15,6 +15,8 @@ class MessageService:
 
     @staticmethod
     def create_message(chat_id: UUID, body: str) -> Message:
+        body = body.strip()[:Message.MAX_MESSAGE_LENGTH]
+
         message = Message(
             chat_id=chat_id,
             body=body,

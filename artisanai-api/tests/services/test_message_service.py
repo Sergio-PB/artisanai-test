@@ -64,6 +64,19 @@ class TestMessageService(unittest.TestCase):
         self.assertIsNone(message.updated_at)
         self.assertIsNone(message.deleted_at)
 
+    def test_given_300_characters_body_when_create_message_then_message_body_is_capped(self):
+        # Arrange
+        chat_id = self.chat.id
+        body = 'A' * 300
+        expected_body = 'A' * 255
+
+        # Act
+        message = MessageService.create_message(chat_id, body)
+
+        # Assert
+        self.assertIsInstance(message, Message)
+        self.assertEqual(message.body, expected_body)
+
     def test_given_message_id_when_get_message_then_retrieved_message_has_expected_body(self):
         # Arrange
         message_id = self.message2.id
